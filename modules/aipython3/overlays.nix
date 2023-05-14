@@ -82,6 +82,9 @@ pkgs: {
     clip-anytorch = callPackage ../../packages/clip-anytorch { };
     clean-fid = callPackage ../../packages/clean-fid { };
     getpass-asterisk = callPackage ../../packages/getpass-asterisk { };
+    peft = callPackage ../../packages/peft { };
+    fastapi-events = callPackage ../../packages/fastapi-events { };
+    fastapi-socketio = callPackage ../../packages/fastapi-socketio { };
   };
 
   torchRocm = final: prev: rec {

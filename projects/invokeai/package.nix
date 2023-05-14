@@ -55,6 +55,10 @@ aipython3.buildPythonPackage {
     getpass-asterisk
     safetensors
     datasets
+    fastapi
+    fastapi-events
+    fastapi-socketio
+    peft
   ];
   nativeBuildInputs = [ aipython3.pythonRelaxDepsHook ];
   pythonRemoveDeps = [ "clip" "pyreadline3" "flaskwebgui" "opencv-python" ];
@@ -71,9 +75,12 @@ aipython3.buildPythonPackage {
       '
     ''
   ];
-  patchPhase = ''
-    runHook prePatch
 
+  patches = [
+    patches/001-fix-version-requirements.patch
+  ];
+
+  postPatchPhase = ''
     # Add subprocess to the imports
     substituteInPlace ./ldm/invoke/config/invokeai_configure.py --replace \
         'import shutil' \
@@ -87,7 +94,6 @@ import subprocess
     substituteInPlace ./ldm/invoke/config/invokeai_configure.py --replace \
       "shutil.copytree(configs_src, configs_dest, dirs_exist_ok=True)" \
       "subprocess.call('cp -r --no-preserve=mode {configs_src} {configs_dest}'.format(configs_src=configs_src, configs_dest=configs_dest), shell=True)"
-    runHook postPatch
   '';
   postFixup = ''
     chmod +x $out/bin/*
