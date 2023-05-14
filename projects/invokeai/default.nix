@@ -7,6 +7,7 @@
     src = inputs.invokeai-src;
 
     mkInvokeAIVariant = args: pkgs.callPackage ./package.nix ({ inherit src; } // args);
+
   in {
     packages = {
       invokeai-amd = mkInvokeAIVariant {
