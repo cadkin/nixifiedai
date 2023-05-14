@@ -30,7 +30,6 @@
     invokeai-amd = {
       imports = [
         config.flake.nixosModules.invokeai
-        ./nixos/amd.nix
         (packageModule "invokeai-amd")
       ];
     };
