@@ -85,6 +85,8 @@ pkgs: {
     peft = callPackage ../../packages/peft { };
     fastapi-events = callPackage ../../packages/fastapi-events { };
     fastapi-socketio = callPackage ../../packages/fastapi-socketio { };
+    xformers = callPackage ../../packages/xformers { cudaPackages = prev.torch.passthru.cudaPackages; };
+    pyre-extensions = callPackage ../../packages/pyre-extensions { };
   };
 
   torchRocm = final: prev: rec {

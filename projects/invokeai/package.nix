@@ -61,6 +61,7 @@ aipython3.buildPythonPackage {
     fastapi-events
     fastapi-socketio
     peft
+    xformers
   ];
   nativeBuildInputs = [ aipython3.pythonRelaxDepsHook ];
   pythonRemoveDeps = [ "clip" "pyreadline3" "flaskwebgui" "opencv-python" ];
