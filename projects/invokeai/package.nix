@@ -63,9 +63,10 @@ aipython3.buildPythonPackage {
     peft
     xformers
   ];
+
   nativeBuildInputs = [ aipython3.pythonRelaxDepsHook ];
   pythonRemoveDeps = [ "clip" "pyreadline3" "flaskwebgui" "opencv-python" ];
-  pythonRelaxDeps = [ "dnspython" "protobuf" "flask" "flask-socketio" "pytorch-lightning" ];
+  pythonRelaxDeps = [ "dnspython" "protobuf" "flask" "flask-socketio" "pytorch-lightning" "diffusers" "fastapi" "numpy" "torch" "transformers" ];
   makeWrapperArgs = [
     '' --run '
       if [ -d "/usr/lib/wsl/lib" ]
@@ -89,10 +90,6 @@ aipython3.buildPythonPackage {
     # See note about consumer GPUs:
     # https://docs.amd.com/bundle/ROCm-Deep-Learning-Guide-v5.4.3/page/Troubleshooting.html
     " --set-default HSA_OVERRIDE_GFX_VERSION 10.3.0"
-  ];
-
-  patches = [
-    patches/001-fix-version-requirements.patch
   ];
 
   postPatchPhase = ''
