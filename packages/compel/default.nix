@@ -2,12 +2,12 @@
 
 buildPythonPackage rec {
   pname = "compel";
-  version = "1.1.0";
+  version = "1.1.5";
   format = "pyproject";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-CNP1nh8LHojtb0cFgm9ZLemMAQqbMQnJRTjJTkANPGU=";
+    sha256 = "sha256-kypESFU5g9sz9Ik1FiOe1QAbOEzCEeMoQegLH5Tc0PY=";
   };
 
   propagatedBuildInputs = [
